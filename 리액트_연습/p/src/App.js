@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
 import Counter from './Counter'
+import InputSample from './InpustSample'
 import './App.css'
 function App() {
   const name = 'react'
@@ -23,6 +24,7 @@ function App() {
       <div className="gray-box"></div>
 
       <Counter></Counter>
+      <InputSample></InputSample>
     </Wrapper>
   );
 }
