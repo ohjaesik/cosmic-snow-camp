@@ -14,7 +14,8 @@ function App() {
   return (
     <Wrapper>
     {/* 주석 사용하기 */}
-        <Hello name="react" color="red" // 태그 내부에서 주석하용하기
+        <Hello name="react" color="red" 
+        isSpecial// 태그 내부에서 주석하용하기
       />
         <Hello color="pink"/>
       <div style={style}>{name}</div>
