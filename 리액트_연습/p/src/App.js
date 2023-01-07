@@ -5,6 +5,7 @@ import Wrapper from './Wrapper'
 import Counter from './Counter'
 import InputSample from './InpustSample'
 import './App.css'
+import UserList from './UserList'
 function App() {
   const name = 'react'
   const style = {
@@ -25,6 +26,7 @@ function App() {
 
       <Counter></Counter>
       <InputSample></InputSample>
+      <UserList></UserList>
     </Wrapper>
   );
 }
