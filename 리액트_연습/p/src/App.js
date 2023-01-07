@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
 import Counter from './Counter'
@@ -7,6 +7,29 @@ import InputSample from './InpustSample'
 import './App.css'
 import UserList from './UserList'
 function App() {
+
+  const users = [
+    {
+      id:1,
+      username: 'v',
+      email:'1@gmail.com'
+    },
+    {
+      id:2,
+      username: 't',
+      email:'2@gmail.com'
+    },
+    {
+      id:3,
+      username: 'l',
+      email:'3@gmail.com'
+    }
+  ]
+  const nextId = useRef(4);
+  const onCreate = () => {
+    nextId.current += 1;
+
+  }
   const name = 'react'
   const style = {
     backgroundColor: 'black',
@@ -26,7 +49,7 @@ function App() {
 
       <Counter></Counter>
       <InputSample></InputSample>
-      <UserList></UserList>
+      <UserList users={users}></UserList>
     </Wrapper>
   );
 }
