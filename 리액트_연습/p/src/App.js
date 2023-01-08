@@ -24,17 +24,20 @@ function App() {
     {
       id:1,
       username: 'v',
-      email:'1@gmail.com'
+      email:'1@gmail.com',
+      active: true
     },
     {
       id:2,
       username: 't',
-      email:'2@gmail.com'
+      email:'2@gmail.com',
+      active: true
     },
     {
       id:3,
       username: 'l',
-      email:'3@gmail.com'
+      email:'3@gmail.com',
+      active: false
     }
   ])
   const nextId = useRef(4);
@@ -54,6 +57,12 @@ function App() {
   }
   const onRemove = id => {
     setUsers(users.filter(user => user.id !== id));
+  }
+  const onToggle = id => {
+    setUsers(
+      users.map(user =>
+        user.id === id ? {...user, active: !user.active} : user)
+    )
   }
   const name = 'react'
   const style = {
@@ -79,7 +88,7 @@ function App() {
         email = {email}
         onChange = {onChange}
         onCreate = {onCreate}/>
-      <UserList users={users} onRemove = {onRemove}></UserList>
+      <UserList users={users} onRemove = {onRemove} onToggle={onToggle}></UserList>
     </Wrapper>
   );
 }
