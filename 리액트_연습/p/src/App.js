@@ -18,13 +18,13 @@ function App() {
     email: '',
   })
   const {username, email} = inputs;
-  const onChange = e => {
+  const onChange = useCallback(e => {
     const {name, value} = e.target;
     setInputs({
       ...inputs,
       [name]: value
-    });
-  };
+    }, []);
+  });
   const [users, setUsers] = useState([
     {
       id:1,
@@ -52,23 +52,22 @@ function App() {
       username,
       email
     };
-    setUsers([...users,user]);
+    setUsers([users => user.concat(user)]);
     setInputs({
       username: '',
-      email:'',
-    }, [users,username,email])
-    nextId.current += 1;
-
-  })
+      email:'',});
+      nextId.current += 1;
+    }, [username,email])
+    
   const onRemove = useCallback(id => {
-    setUsers(users.filter(user => user.id !== id));
-  }, [users])
+    setUsers(users => users.filter(user => user.id !== id));
+  }, [])
   const onToggle = useCallback(id => {
-    setUsers(
+    setUsers( users =>
       users.map(user =>
         user.id === id ? {...user, active: !user.active} : user)
     )
-  }, [users])
+  }, [])
   const name = 'react'
   const style = {
     backgroundColor: 'black',
