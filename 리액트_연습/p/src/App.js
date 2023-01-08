@@ -1,5 +1,5 @@
 
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useMemo} from 'react'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
 import Counter from './Counter'
@@ -7,7 +7,12 @@ import InputSample from './InpustSample'
 import CreateUser from './CreateUser'
 import './App.css'
 import UserList from './UserList'
+function counterActiveUsers(users) {
+  console.log('활성 사용자 수를 세는 중...');
+  return users.filter(user => user.active).length;
+}
 function App() {
+  
   const [inputs, setInputs] = useState({
     username: '',
     email: '',
@@ -71,6 +76,7 @@ function App() {
     fontSize: 24,
     padding : '1rem'
   }
+  const count = useMemo(() => counterActiveUsers(users), [users]);
   return (
     <Wrapper>
     {/* 주석 사용하기 */}
@@ -89,6 +95,7 @@ function App() {
         onChange = {onChange}
         onCreate = {onCreate}/>
       <UserList users={users} onRemove = {onRemove} onToggle={onToggle}></UserList>
+      <div>활성 사용자 수 : {count}</div>
     </Wrapper>
   );
 }
