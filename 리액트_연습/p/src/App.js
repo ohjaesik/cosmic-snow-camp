@@ -1,5 +1,5 @@
 
-import React, {useState, useRef, useMemo} from 'react'
+import React, {useState, useRef, useMemo, useCallback} from 'react'
 import Hello from './Hello'
 import Wrapper from './Wrapper'
 import Counter from './Counter'
@@ -46,7 +46,7 @@ function App() {
     }
   ])
   const nextId = useRef(4);
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     const user = {
       id : nextId.current,
       username,
@@ -56,19 +56,19 @@ function App() {
     setInputs({
       username: '',
       email:'',
-    })
+    }, [users,username,email])
     nextId.current += 1;
 
-  }
-  const onRemove = id => {
+  })
+  const onRemove = useCallback(id => {
     setUsers(users.filter(user => user.id !== id));
-  }
-  const onToggle = id => {
+  }, [users])
+  const onToggle = useCallback(id => {
     setUsers(
       users.map(user =>
         user.id === id ? {...user, active: !user.active} : user)
     )
-  }
+  }, [users])
   const name = 'react'
   const style = {
     backgroundColor: 'black',
