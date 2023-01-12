@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './Magagine.css'
 function Magagine() {
   const items = [
     {
