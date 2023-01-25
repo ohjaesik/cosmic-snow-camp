@@ -17,9 +17,11 @@ function Header () {
   return(
     <React.Fragment>
       <h1>음식 영양 성분 검색기</h1>
-      <input type="text" onChange={onChange}></input><button type='submit' onClick={onClick}>button</button>
-      <Main foods={foodInput}/>
+      <input type="text" value={foodInput} onChange={onChange}></input><button type='submit' onClick={onClick}>button</button>
+      <Main foods={foodInput} search={foodInput}/>
+
     </React.Fragment>
   )
 }
 export default Header;
+
