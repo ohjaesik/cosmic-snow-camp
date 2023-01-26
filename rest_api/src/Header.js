@@ -9,7 +9,7 @@ function Header () {
   }
   const onClick = (e) => {
     e.preventDefault();
-
+    console.log({foodInput})
     
   }
   
